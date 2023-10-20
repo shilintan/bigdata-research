@@ -90,13 +90,13 @@ try {
 cat flink-conf.yaml |grep "parallelism.default"
 ```
 
-最大并行度(?)
+最大并行度
 
 ​	> 128, <  32768
 
 ​	所以并行度最大值 21845, 需要观察cp/sp时间再降低
 
-客户端通过处理延迟发现运行时过低
+客户端发现处理延迟发现运行时过低
 
 ​	假设 最大允许堆积时间 < 10s
 
@@ -118,11 +118,11 @@ cat flink-conf.yaml |grep "parallelism.default"
 
 ​	souce的并发度应该始终保持为1
 
-服务端发现slot过低
+服务端发现slot饱和度过高
 
 ​	JobManager.taskSlotsAvailable / taskSlotsTotal < 0.2
 
-​	k8s hpa + ca, p8s 聚合指标
+​	k8s ca + hpa 基于 p8s 聚合指标
 
 ​	调整tm的副本数量, 一次性增加20%副本数
 
@@ -138,7 +138,7 @@ cat flink-conf.yaml |grep "parallelism.default"
 
 整理思路
 
-部署k8s, p8s, flink
+部署k8s, p8s, flink, kafka
 
 编写wordcount
 
