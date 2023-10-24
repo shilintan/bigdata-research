@@ -3,14 +3,15 @@
 
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/bookworm64"
+  config.vm.box = "hashicorp/bionic64"
   config.vm.box_check_update = false
   config.vm.synced_folder ".", "/vagrant", disabled: true
-  config.vm.synced_folder "D:\\server_files", "/local_file", type: "rsync"
-  config.vm.disk :disk, name: "disk1", size: "10GB"
-  config.vm.network "public_network", bridge: "eth0"
-  config.vm.provider "virtualbox" do |vb|
+  config.vm.synced_folder "D:\\server_files/sealos", "/local_file"
+  config.vm.disk :disk, name: "disk1", size: "50GB"
+  config.vm.provider "vmware_workstation" do |vb|
     vb.gui = false
+    vb.memory = 10240
+    vb.cpus = 10
   end
   config.vm.provision "shell", inline: <<-SHELL
     echo "sudo su -" >> .bashrc
