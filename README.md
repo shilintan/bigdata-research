@@ -12,6 +12,8 @@ flink基于k8s资源调度自动扩缩容, 自动优化慢计算
 
 # k8s
 
+部署k8s, 参考文档: https://github.com/shilintan/k8s-research/blob/main/%E9%83%A8%E7%BD%B2k8s-sealos/sealos%E5%AE%89%E8%A3%85k8s.md
+
 ca(集群自动扩容节点)
 
 
