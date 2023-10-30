@@ -63,48 +63,29 @@ env.execute("Word Count Example");
 
 # flink
 
-1.6
+参考 ` README.md `
 
-```yaml
-apiVersion: flink.apache.org/v1beta1
-kind: FlinkDeployment
-metadata:
-  namespace: default
-  name: basic-example
-spec:
-  image: flink:1.16
-  flinkVersion: v1_16
-  flinkConfiguration:
-    taskmanager.numberOfTaskSlots: "2"
-  serviceAccount: flink
-  jobManager:
-    resource:
-      memory: "2048m"
-      cpu: 1
-  taskManager:
-    resource:
-      memory: "2048m"
-      cpu: 1
-  job:
-    jarURI: local:///opt/flink/examples/streaming/StateMachineExample.jar
-    parallelism: 2
-    upgradeMode: stateless
-    state: running
-```
+
+
+
 
 # 问题
 
-1.19-snapshot中的reactive讲了什么?
+## 1.19-snapshot中的reactive讲了什么?
 
-​	在taskmanager扩容之后会调整job的并行度
+在taskmanager扩容之后会调整job的并行度
 
-​	但是在深度使用flink场景中, job的并行度都是由算子设置的, 所以可能意义不大
+但是在深度使用flink场景中, job的并行度都是由算子设置的, 所以可能意义不大
+
+## flink有没有原生指标直接就可以观察到堆积量, 而不是通过看上层mq消费进度
+
+
 
 # 行动项
 
 整理思路
 
-部署k8s, p8s, flink, kafka
+部署kafka
 
 编写wordcount
 
@@ -112,4 +93,34 @@ spec:
 
 # 后续
 
-记忆图谱
+配置文件如何集成进去
+
+​	修改 `defaultConfiguration/flink-conf.yaml`
+
+监控
+
+​	配置pushgateway
+
+k8s ca
+
+​	腾讯云
+
+算子如何自动感知并调整并行度
+
+
+
+# 调试
+
+观察应用启动日志
+
+
+
+# 研究
+
+operator
+
+crd
+
+jobmanager
+
+taskmanager

@@ -76,14 +76,13 @@ operatorPod:
   # Topology spread constrains
   # https://kubernetes.io/docs/concepts/scheduling-eviction/topology-spread-constraints/
   topologySpreadConstraints: []
-  resources: {}
-  # resources:
-  #   limits:
-  #     cpu: "250m"
-  #     memory: "512Mi"
-  #   requests:
-  #     cpu: "250m"
-  #     memory: "512Mi"
+  resources:
+   limits:
+     cpu: "250m"
+     memory: "512Mi"
+   requests:
+     cpu: "250m"
+     memory: "512Mi"
   webhook:
     resources: {}
 
@@ -153,6 +152,11 @@ defaultConfiguration:
 
     kubernetes.operator.reconcile.interval: 15 s
     kubernetes.operator.observer.progress-check.interval: 5 s
+    
+    #kubernetes.operator.leader-election.enabled: true
+    #kubernetes.operator.leader-election.lease-name: flink-operator-lease
+    
+    #kubernetes.operator.dynamic.namespaces.enabled: true
   log4j-operator.properties: |+
     # Flink Operator Logging Overrides
     # rootLogger.level = DEBUG
