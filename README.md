@@ -65,7 +65,11 @@ env.execute("Word Count Example");
 
 # flink
 
-官方文档: https://github.com/apache/flink-kubernetes-operator
+官方文档:
+
+​	https://github.com/apache/flink-kubernetes-operator
+
+​	https://nightlies.apache.org/flink/flink-kubernetes-operator-docs-main
 
 部署参考 ` 部署.md `
 

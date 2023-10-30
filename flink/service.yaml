@@ -3,7 +3,7 @@ kind: FlinkDeployment
 metadata:
   name: service
 spec:
-  image: flink:1.14.6-java11
+  image: flink:1.14.6-scala_2.12-java11
   flinkVersion: v1_14
   ingress:
     template: "flink.shilintan.io"
@@ -21,8 +21,8 @@ spec:
       cpu: 1
   taskManager:
     resource:
-      memory: "2048m"
-      cpu: 1
+      memory: "4096m"
+      cpu: 2
   podTemplate:
     spec:
       containers:
