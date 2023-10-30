@@ -85,8 +85,6 @@ env.execute("Word Count Example");
 
 但是在深度使用flink场景中, job的并行度都是由算子设置的, 所以可能意义不大
 
-## flink有没有原生指标直接就可以观察到堆积量, 而不是通过看上层mq消费进度
-
 
 
 # 行动项
