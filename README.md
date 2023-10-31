@@ -65,6 +65,26 @@ env.execute("Word Count Example");
 
 # flink
 
+## 直接部署jobmanager方式
+
+https://nightlies.apache.org/flink/flink-docs-release-1.14/docs/deployment/config/#kubernetes
+
+```
+namespace=flink
+
+kubectl create namespace $namespace
+kubectl create serviceaccount flink -n $namespace
+kubectl create clusterrolebinding "flink-role-binding-${namespace}_flink" --clusterrole=edit --serviceaccount="${namespace}:flink" -n $namespace
+```
+
+tm的pod template file: https://github.com/apache/flink `test-scripts/container-scripts/kubernetes-pod-template.yaml`
+
+在jm的configmap配置`kubernetes.pod-template-file.taskmanager` = `kubernetes-pod-template.yaml`
+
+
+
+## operator方式
+
 官方文档:
 
 ​	https://github.com/apache/flink-kubernetes-operator
